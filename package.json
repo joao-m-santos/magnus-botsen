@@ -1,0 +1,28 @@
+{
+  "name": "magnus-botsen",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joao-m-santos/magnus-botsen.git"
+  },
+  "author": "joao-m-santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joao-m-santos/magnus-botsen/issues"
+  },
+  "homepage": "https://github.com/joao-m-santos/magnus-botsen#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "lowdb": "^5.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
