@@ -33,6 +33,7 @@ jobs:
 
             if [ ! -d "${{ env.REPO_NAME }}" ]; then
               git clone ${{ env.GITHUB_URL }}
+              cd ${{ env.REPO_NAME }}
             else
               cd ${{ env.REPO_NAME }}
               git pull origin master
