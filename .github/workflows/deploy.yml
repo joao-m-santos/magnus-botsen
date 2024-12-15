@@ -40,7 +40,7 @@ jobs:
             fi
 
             # Rebuild the Docker container using Docker Compose
-            docker-compose down  # Stop and remove the running containers (optional but recommended)
-            docker-compose up --build -d  # Build and run the container in detached mode
+            docker compose down  # Stop and remove the running containers (optional but recommended)
+            docker compose up --build -d  # Build and run the container in detached mode
 
             docker ps

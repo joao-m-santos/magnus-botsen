@@ -10,8 +10,5 @@ COPY . .
 # Install dependencies
 RUN npm install
 
-# Expose the application port - not needed?
-# EXPOSE 8001
-
 # Start the application
 CMD ["npm", "start"]
