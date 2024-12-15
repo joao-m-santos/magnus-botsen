@@ -1,0 +1,44 @@
+name: CI/CD to Raspberry Pi Docker Host
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+env:
+  REPO_NAME: magnus-botsen
+  GITHUB_URL: git@github.com:joao-m-santos/magnus-botsen.git
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      # SSH into Raspberry Pi and pull/run the Docker container
+      - name: Deploy to Raspberry Pi
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.PI_HOST }}
+          port: ${{ secrets.PI_SSH_PORT }}
+          username: ${{ secrets.PI_USER_NAME }}
+          password: ${{ secrets.PI_USER_PASSWORD }}
+          script: |
+            cd Apps
+
+            if [ ! -d "$REPO_NAME" ]; then
+              git clone $GITHUB_URL
+            else
+              cd $REPO_NAME
+              git pull origin master
+            fi
+
+            # Rebuild the Docker container using Docker Compose
+            docker-compose down  # Stop and remove the running containers (optional but recommended)
+            docker-compose up --build -d  # Build and run the container in detached mode
+
+            docker ps

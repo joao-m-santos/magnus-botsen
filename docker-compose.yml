@@ -1,0 +1,12 @@
+name: magnus-botsen
+
+services:
+  app: # Name of the service
+    build: # Build the Docker image from the Dockerfile in the current context
+      context: . # Set the context to the current directory
+    # ports: # Map ports
+    #   - '8001:8001' # Map host port 8001 to container port 8001
+    volumes: # Mount the current directory to the container for live updates (optional)
+      - .:/app # Mount the local directory to /app in the container
+    environment: # Define environment variables if needed
+      - NODE_ENV=production # Example environment variable
