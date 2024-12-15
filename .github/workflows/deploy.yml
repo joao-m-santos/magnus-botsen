@@ -1,10 +1,10 @@
 name: CI/CD to Raspberry Pi Docker Host
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 env:
   REPO_NAME: magnus-botsen
@@ -28,12 +28,13 @@ jobs:
           username: ${{ secrets.PI_USER_NAME }}
           password: ${{ secrets.PI_USER_PASSWORD }}
           script: |
+            echo "[check]" && whoami && pwd
             cd Apps
 
-            if [ ! -d "$REPO_NAME" ]; then
-              git clone $GITHUB_URL
+            if [ ! -d "${{ env.REPO_NAME }}" ]; then
+              git clone ${{ env.GITHUB_URL }}
             else
-              cd $REPO_NAME
+              cd ${{ env.REPO_NAME }}
               git pull origin master
             fi
 
