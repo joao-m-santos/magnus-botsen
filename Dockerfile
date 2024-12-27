@@ -1,14 +1,17 @@
-# Use the official Node.js image
-FROM node:22
+# use the official Bun image
+# see all versions at https://hub.docker.com/r/oven/bun/tags
+FROM oven/bun:1 AS base
 
-# Set working directory
+# set working directory
 WORKDIR /app
 
-# Copy the rest of the application
+# copy the rest of the application
 COPY . .
 
-# Install dependencies
-RUN npm install
+# install with --production (exclude devDependencies)
+RUN bun install --production
+
+ENV NODE_ENV=production
 
 # Start the application
-CMD ["npm", "start"]
+CMD bun start
