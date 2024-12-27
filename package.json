@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/joao-m-santos/magnus-botsen#readme",
   "dependencies": {
-    "discord.js": "^14.7.1",
-    "dotenv": "^16.0.3",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
     "lowdb": "^5.0.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^3.1.9"
   }
 }
